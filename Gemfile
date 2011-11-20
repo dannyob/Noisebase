@@ -7,7 +7,7 @@ gem 'rdiscount'
 gem 'authlogic'
 gem 'omniauth'
 gem 'carrierwave'
-
+gem 'acts_as_votable'
 gem 'acts_as_commentable'
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

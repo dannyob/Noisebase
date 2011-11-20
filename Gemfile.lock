@@ -32,6 +32,8 @@ GEM
     activesupport (3.1.1)
       multi_json (~> 1.0)
     acts_as_commentable (3.0.1)
+    acts_as_votable (0.1.2)
+      rails (>= 3.0.0)
     addressable (2.2.6)
     ansi (1.4.1)
     arel (2.2.1)
@@ -183,6 +185,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable
+  acts_as_votable
   authlogic
   carrierwave
   coffee-rails (~> 3.1.1)
