@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  login: MyString
+  email: MyString
+  views_count: 1
+  bio: MyText
+
+two:
+  login: MyString
+  email: MyString
+  views_count: 1
+  bio: MyText
