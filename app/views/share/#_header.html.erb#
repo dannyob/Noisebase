@@ -1,0 +1,56 @@
+<div id="header">
+	<div id="topbar">
+		<div id="hlinks">
+			<span id="hlinks-nav">
+				<% if !login? %>
+				<a href="/login">Login</a>
+				<% else %>
+				<a href="/users/<%=current_user.id%>"><%=current_user.display_name%></a>
+				<% end %>
+				<% if !login? || current_user.crypted_password.nil? %>
+				<span class="lsep">|</span>
+				<a href="/signup">Signup</a>
+				<% end %>
+				<% 	if login? && !current_user.crypted_password.nil? %>
+				<span class="lsep">|</span>
+				<a href="/users/<%=current_user.id%>/edit">Users</a>
+				<% 	end %>
+				<% if login? %>
+				<span class="lsep">|</span>
+				<a href="/logout">Logout</a>
+				<% end %>
+				<span class="lsep">|</span>
+				<a>Haqthepl8</a>
+			</span>
+		</div>
+		<div id="hsearch">
+			<form id="search" action="/search" method="get">
+				<div>
+					<input name="q" class="textbox" tabindex="1" onfocus="if (this.value=='Search') this.value = ''" onblur="if (this.value=='') this.value = 'Search'" type="text" maxlength="80" size="28" value="Search">
+				</div>
+			</form>
+		</div>
+	</div>
+	<br class="cbt">
+	<div style="height: 35px; margin-top: 35px;" id="hlogo">
+		<a href="/" style="text-decoration: none;"><span style="font-size: 25px; color: grey; font-family: courier;">noise</span><span style="font-size: 40px; color: green; font-weight: bold; font-family: courier;">scheme</span></a>
+	</div>
+	<div id="hmenus">
+		<div class="nav mainnavs">
+			<ul>
+				<li class="<%= @youareat == 'questions' ? 'youarehere' : '' %>"><a id="nav-questions" href="/questions">Questions</a></li>
+				<li class="<%= @youareat == 'tags' ? 'youarehere' : '' %>"><a id="nav-tags" href="/tags">Tags</a></li>
+				<li class="<%= @youareat == 'users' ? 'youarehere' : '' %>"><a id="nav-users" href="/users">Users</a></li>
+				<!-- <li class="<%= @youareat == 'badges' ? 'youarehere' : '' %>"><a id="nav-badges" href="/badges">’µ«’¾Ï</a></li> -->
+				<li class="<%= @youareat == 'unanswered' ? 'youarehere' : '' %>"><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+			</ul>
+		</div>
+		<div class="nav askquestion">
+			<ul>
+				<li class="<%= @youareat == 'new_question' ? 'youarehere' : '' %>">
+					<%= link_to 'New Question', new_question_path %>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
