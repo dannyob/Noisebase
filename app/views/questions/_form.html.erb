@@ -35,10 +35,10 @@ $(document).ready(function() {
 
 <div class="form-item">
 	<label>Tag</label>
-  <input type="text" onfocus="if (this.value=='Use Commas to separate tags) this.value = ''" onblur="if (this.value=='') this.value = 'Use Commas to separate tags'" tabindex="103" value="<%= @question.tags.blank? ? 'Use Commas to separate tags : @question.tag_list %>" size="60" maxlength="60" name="tags" id="tags" class="edit-field-overlayed ac_input" autocomplete="off">		
+  <input type="text" onfocus="if (this.value=='Use Commas to separate tags) this.value = ''" onblur="if (this.value=='') this.value = 'Use Commas to separate tags'" tabindex="103" value="<%= @question.tags.blank? ? 'Use Commas to separate tags' : @question.tags %>" size="60" maxlength="60" name="tags" id="tags" class="edit-field-overlayed ac_input" autocomplete="off">		
   </div>
 
-<% if @question.new_record? && !login? %>
+<% if @question.new_record? %>
 <div class="form-item">
 	<table>
 		<tr>
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			</td>
 			<td class="vm">
 				<div>
-					<label for="username">用户名</label>
+					<label for="username">Username</label>
 					<input type="text" tabindex="105" value="<%=@user ? @user.name : ''%>" maxlength="30" size="30" name="username" id="username">
 				</div>
 				<div>

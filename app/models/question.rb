@@ -6,7 +6,8 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true, :length => {:minimum => 10}
   validates :content, :presence => true, :length => {:minimum => 10}
 
-
+  acts_as_taggable
+  acts_as_taggable_on :tags
   acts_as_commentable
   
  def self.hot(limit = LIMIT)

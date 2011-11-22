@@ -7,6 +7,7 @@ gem 'rdiscount'
 gem 'omniauth', '~> 0.3.2'
 gem 'carrierwave'
 gem 'acts_as_votable'
+gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'acts_as_commentable'
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
