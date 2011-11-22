@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     case provider
       when "github"
         @user = User.where(:github_uid => auth_hash["uid"]).first
-        unless @user.nil?
+        if @user.nil?
           puts "Creating New User"
           @user = User.new
           @user.email        = auth_hash["extra"]["user_hash"]["email"] if auth_hash["extra"]["user_hash"]["email"]
