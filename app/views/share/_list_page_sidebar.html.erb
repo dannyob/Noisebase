@@ -1,0 +1,7 @@
+<%
+  @recent_users = User.recent
+%>
+<div id="sidebar">
+	<%= render :partial => "share/answered_questions_count" %>
+	<%= render :partial => "share/recent_users" %>
+</div>

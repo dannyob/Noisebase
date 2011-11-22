@@ -1,0 +1,12 @@
+/* rails validate error message */
+#error_explanation { 
+  color: #990000;
+  font-size: 130%;
+  font-weight: bold;
+}
+#error_explanation h4 {
+  margin: 8px;
+}
+#error_explanation li {
+  margin-bottom:6px;
+}

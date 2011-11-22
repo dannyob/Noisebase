@@ -1,0 +1,72 @@
+<%= content_for :html_head do %>
+  <link rel="stylesheet" type="text/css" href="/markitup/skins/simple/style.css" />
+  <link rel="stylesheet" type="text/css" href="/markitup/sets/markdown/style.css" />
+  <script type="text/javascript" src="/markitup/jquery.markitup.js"></script>
+  <script type="text/javascript" src="/markitup/sets/markdown/set.js"></script>  
+<% end %>
+
+<script language="javascript">
+$(document).ready(function() {
+    $('#post-editor textarea').markItUp(mySettings);
+    $("#question_title").focus();
+});
+</script>
+
+<%= form_for(@question) do |f| %>
+
+<div class="form-item ask-title">
+	<table class="ask-title-table">
+		<tr>
+			<td class="ask-title-cell-key">
+				<label for="question_title">Title</label>
+			</td>
+			<td class="ask-title-cell-value">
+				<%= f.text_field :title, :class => "ask-title-field", :tabindex => "100", :maxlength => 50 %>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="post-editor">
+	<div id="wmd-container">
+		<%= f.text_area :content, :class=>"processed", :tabindex=>"101", :rows=>"15", :cols=>"92", :id=>"wmd-input" %>
+	</div>
+</div>
+
+<div class="form-item">
+	<label>Tag</label>
+  <input type="text" onfocus="if (this.value=='Use Commas to separate tags) this.value = ''" onblur="if (this.value=='') this.value = 'Use Commas to separate tags'" tabindex="103" value="<%= @question.tags.blank? ? 'Use Commas to separate tags : @question.tag_list %>" size="60" maxlength="60" name="tags" id="tags" class="edit-field-overlayed ac_input" autocomplete="off">		
+  </div>
+
+<% if @question.new_record? && !login? %>
+<div class="form-item">
+	<table>
+		<tr>
+			<td class="vm open-id-login">
+				<a href="/login?returnurl=/questions/new" style="font-size: 200%; margin-left: 30px;" id="login-link">New Question</a>
+			</td>
+			<td class="orcell">
+				<div class="orword">or</div>
+				<div class="orline"></div>
+			</td>
+			<td class="vm">
+				<div>
+					<label for="username">用户名</label>
+					<input type="text" tabindex="105" value="<%=@user ? @user.name : ''%>" maxlength="30" size="30" name="username" id="username">
+				</div>
+				<div>
+					<label for="email">Email</label>
+					<input type="text" tabindex="106" value="<%=@user ? @user.email : ''%>" maxlength="40" size="40" name="email" id="email">
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<% end %>
+
+<div class="form-submit cbt">
+	<% submit_text = @question.new_record? ? "Post Question" : "Save Changes" %>
+	<%= f.submit submit_text, :tabindex=>"120", :style=>"width: 160px"%>
+</div>
+
+<% end %>
