@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     provider = auth_hash["provider"]
     case provider
       when "github"
-        @user ||= User.where(:github_uid => auth_hash["credentials"]["token"]).first
+        @user = User.where(:github_uid => auth_hash["uid"]).first
         unless @user
           puts "Creating New User"
           @user = User.new
