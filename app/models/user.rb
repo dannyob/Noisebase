@@ -5,9 +5,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :badges
 
-  validates :name, :presence => true, :uniqueness => true
-  validates :email, :presence => true, :uniqueness => true
-
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true  
   
   mount_uploader :avatar, AvatarUploader 
