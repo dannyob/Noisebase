@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Communism</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
+	<head>
+		<title><%= yield(:title).blank? ? DEFAULT_TITLE : yield(:title) %></title>
+	  <%= stylesheet_link_tag :application %>	
+    <%= javascript_include_tag :application %>
+		<%= csrf_meta_tag %>   
+		<%= yield :html_head %>
+	</head>
 <body>
 
-<%= yield %>
+<div id="custom-header"></div>
+<div class="container">
+	<%= render :partial => "share/header" %>
+	<div id="content">
+		<%= yield %>
+	</div>
+</div>
+<%= render :partial => "share/footer" %>
 
 </body>
 </html>

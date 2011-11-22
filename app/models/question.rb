@@ -1,10 +1,10 @@
 class Question < ActiveRecord::Base
-
+  LIMIT = 10
   belongs_to :user
   has_many   :answers 
 
-  validates :title, :presence => true, :minimum => 10
-  validates :content, :presence => true, :minimum => 10
+  validates :title, :presence => true, :length => {:minimum => 10}
+  validates :content, :presence => true, :length => {:minimum => 10}
 
 
   acts_as_commentable

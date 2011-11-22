@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :badges
 
   validates :name, :presence => true, :uniqueness => true
-  validates :email, :presence => true, :uniquness => true
+  validates :email, :presence => true, :uniqueness => true
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true  
   
@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   
   def display_name
     self.name || self.email
+  end
+  
+  def self.recent
+    all(:limit => 10, :order => "created_at DESC")
   end
 
   def questions_count
