@@ -1,5 +1,4 @@
 class Question < ActiveRecord::Base
-  LIMIT = 10
   belongs_to :user
   has_many   :answers 
 
@@ -9,7 +8,7 @@ class Question < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
   acts_as_commentable
-  
+  LIMIT = 10 
  def self.hot(limit = LIMIT)
     all(:limit => limit, :order => "votes_count DESC, answers_count DESC, views_count DESC, created_at DESC")
   end
@@ -29,6 +28,14 @@ class Question < ActiveRecord::Base
     # count - count(:best_answer_id => nil)
   end      
   
+  def has_best_answer?
+    if self.best_answer_id
+      true
+    end
+    
+    false
+  end
+
   def best_answer
     Answer.find(best_answer_id)
   end

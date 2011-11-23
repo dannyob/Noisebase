@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find session[:user_id]
+    @current_user ||= User.where(:perishable_token => session[:user_token]).first
   end
   
   def log_in(user)

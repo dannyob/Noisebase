@@ -1,3 +1,4 @@
+<% title @question.title %>
 <link rel="stylesheet" type="text/css" href="/markitup/skins/simple/style.css" />
 <link rel="stylesheet" type="text/css" href="/markitup/sets/markdown/style.css" />
 <script type="text/javascript" src="/markitup/jquery.markitup.js"></script>
@@ -93,11 +94,11 @@ function best_answer(aid, is_best_answer) {
 								<td class="post-signature owner">
 									<div class="user-info">
 										<div class="user-action-time">
-											于 <span class="relativetime" title="<%= s @question.created_at%>"><%=time_ago_in_words(@question.created_at)%></span>
+											于 <span class="relativetime" title="<%=  @question.created_at.strftime("%Y-%m-%d %H:%M:%S") %>"><%=time_ago_in_words(@question.created_at)%></span>
 										</div>
 										<div class="user-gravatar32">
 											<a href="/users/<%=@question.user.id%>">
-												<img width="32" height="32" alt="" src="<%=@question.user.avatar_path || '/images/avatar.jpg'%>">
+												<img width="32" height="32" alt="" src="<%=@question.user.avatar_url || '/images/avatar.jpg'%>">
 											</a>
 										</div>
 										<div class="user-details">
@@ -117,13 +118,13 @@ function best_answer(aid, is_best_answer) {
 		<a name="tab-top"></a>
 		<div id="answers-header">
 			<div class="subheader answers-subheader">
-				<h2><%=@question.answers.size%> 条回答</h2>
+				<h2><%=@question.answers.size%> Answered</h2>
 			</div>
 		</div>
 		
 		<!-- show best answer on the top -->
-		<% if @question.has_best_answer?
-			a = @question.best_answer %>
+		<% if @question.has_best_answer? %> 
+			<% a = @question.best_answer %>
 		<a name="<%=a.id%>"></a>
 		<div class="answer">
 			<table>
@@ -163,7 +164,7 @@ function best_answer(aid, is_best_answer) {
 										</div>
 										<div class="user-gravatar32">
 											<a href="/users/<%=a.user.id%>">
-												<img width="32" height="32" alt="" src="<%=a.user.avatar_path || '/images/avatar.jpg'%>">
+												<img width="32" height="32" alt="" src="<%=a.user.avatar_url || '/images/avatar.jpg'%>">
 											</a>
 										</div>
 										<div class="user-details">
@@ -207,7 +208,7 @@ function best_answer(aid, is_best_answer) {
 		<% end %>
 		
 		<!-- show other answers below -->
-		<% @question.answers.sort(:created_at).reverse.each do |a| %>
+		<% @question.answers.sort.reverse.each do |a| %>
 		<% 	if @question.best_answer_id != a.id %>
 		<a name="<%=a.id%>"></a>
 		<div class="answer">
@@ -246,7 +247,7 @@ function best_answer(aid, is_best_answer) {
 										</div>
 										<div class="user-gravatar32">
 											<a href="/users/<%=a.user.id%>">
-												<img width="32" height="32" alt="" src="<%=a.user.avatar_path || '/images/avatar.jpg'%>">
+												<img width="32" height="32" alt="" src="<%= a.user.avatar_url || '/images/avatar.jpg'%>">
 											</a>
 										</div>
 										<div class="user-details">

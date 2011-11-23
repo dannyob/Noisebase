@@ -8,9 +8,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.views_count += 1
     @question.save
+    @answer = Answer.new 
   end
 
   def new
+    @user = current_user 
     @question = Question.new
   end
 
@@ -24,7 +26,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params[:question])
     @user     = current_user
-    @question.tags = params[:tags] # Params tags should pass in a string (e.x "noisebridge, discuss, etc") 
+    @question.user_id = @user.id
+    @question.tag_list = params[:tags] # Params tags should pass in a string (e.x "noisebridge, discuss, etc") 
     if @question.save
       redirect_to @question
     else
