@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 <div class="form-item">
 	<label>Tag</label>
-  <input type="text" onfocus="if (this.value=='Use Commas to separate tags) this.value = ''" onblur="if (this.value=='') this.value = 'Use Commas to separate tags'" tabindex="103" value="<%= @question.tags.blank? ? 'Use Commas to separate tags' : @question.tags %>" size="60" maxlength="60" name="tags" id="tags" class="edit-field-overlayed ac_input" autocomplete="off">		
+  <input type="text" onfocus="this.value = ''" onblur="if (this.value=='') this.value = 'Use Commas to separate tags'" tabindex="103" value="<%= @question.tags.blank? ? 'Use Commas to separate tags' : @question.tags %>" size="60" maxlength="60" name="tags" id="tags" class="edit-field-overlayed ac_input" autocomplete="off">		
   </div>
 
 <% if @question.new_record? %>
