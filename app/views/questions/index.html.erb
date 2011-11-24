@@ -29,7 +29,7 @@
 					<% end %>
 				</div>
 				<div class="started">
-					<span class="relativetime" title="<%= s q.created_at%>"><%=time_ago_in_words(q.created_at)%></span>
+					<span class="relativetime" title="<%= q.created_at.strftime("%Y-%m-%d %H:%M:%S") %>"><%=time_ago_in_words(q.created_at)%></span>
 					<a href="/users/<%=q.user.id%>" ><%=q.user.display_name%></a>
 				</div>
 			</div>
