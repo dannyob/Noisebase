@@ -84,7 +84,7 @@ tr.comment>td{padding-top:5px;padding-bottom:5px;border-bottom:dotted 1px #ddd;}
 #content{margin:0 auto;width:960px;min-height:450px;}#hsearch{margin-right:-4px!important;}
 #hsearch .textbox{color:#000;margin:0;width:200px;max-width:200px;border:none;border-top:1px solid #ccc;border-left:1px solid #ccc;}
 #header{width:960px;height:120px;margin:0 auto;padding-bottom:15px!ie7;}#header #topbar{width:auto;padding:3px 10px 0 10px;float:right;height:30px;line-height:22px;}
-#header #hlogo{height:61px;width:250px;float:left;margin-top:10px;}#header #hmenus{width:705px;float:left;padding:34px 0 20px 5px;margin-top:10px;}
+#header #hlogo{height:61px;width:250px;float:left;margin-top:40px;}#header #hmenus{width:705px;float:left;padding:34px 0 20px 5px;margin-top:10px;}
 #header #topbar #hlinks{float:left;margin:0 35px 0 0;}#hlinks{margin-right:20px!important;}#hlinks a{font-weight:bold;}#header #topbar #hsearch{float:left;}
 #system-message{clear:both;text-align:center;margin:0 0 10px 0;padding:7px;font-weight:bold;color:#735005;background-color:#ffefc6;}
 #system-message a{color:#735005;text-decoration:underline;}.nav{float:left;font-size:125%;}.nav ul{margin:0;}.nav li{background:#000;display:block;float:left;margin-right:7px;}
